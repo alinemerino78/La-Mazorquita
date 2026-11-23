@@ -273,3 +273,12 @@ button { font-family: inherit; cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ===== Modal Aviso de Privacidad (scroll interno + pie fijo) ===== */
+.modal__caja { display: flex; flex-direction: column; overflow: hidden; padding: 0; max-height: 90vh; }
+.modal__cabecera { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; border-bottom: 2px solid var(--maiz); flex: 0 0 auto; }
+.modal__cabecera h2 { margin: 0; font-size: 1.25rem; }
+.modal__caja .cerrar { position: static; float: none; }
+.modal__cuerpo { flex: 1 1 auto; overflow-y: auto; padding: 1rem 1.5rem; overscroll-behavior: contain; }
+.modal__pie { flex: 0 0 auto; padding: 1rem 1.5rem; border-top: 2px solid var(--maiz); background: var(--crema); }
+.modal--obligatorio .cerrar { display: none; }
