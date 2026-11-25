@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Mazorquitaa - Pan de Elote | Repostería artesanal</title>
+  <meta name="description" content="La Mazorquitaa - Pan de Elote: pan de elote, rosca, tamales dulces, flan, panquecitos y galletas artesanales. Pide por WhatsApp 55 5611 2634.">
+  <link rel="icon" href="imagenes/logo.jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- ========== BARRA SUPERIOR ========== -->
+  <header class="barra" id="barra">
+    <div class="barra__interior">
+      <a href="#inicio" class="marca" aria-label="La Mazorquitaa - Inicio">
+        <img src="imagenes/logo.jpeg" alt="Logo La Mazorquitaa" class="marca__logo" width="52" height="52">
+        <span class="marca__texto">La Mazorquitaa<small>Pan de Elote</small></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navegación principal">
+        <a href="#inicio" class="nav__enlace">Inicio</a>
+        <a href="#catalogo" class="nav__enlace">Menú / Catálogo</a>
+        <a href="#nosotros" class="nav__enlace">Nosotros</a>
+        <a href="#contacto" class="nav__enlace">Contacto</a>
+        <a href="#privacidad" class="nav__enlace" data-abrir-privacidad>Aviso de Privacidad</a>
+      </nav>
+
+      <div class="barra__acciones">
+        <button class="btn-carrito" id="btnCarrito" aria-label="Abrir carrito de compras">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM1 2v2h2l3.6 7.6-1.3 2.4A2 2 0 0 0 7 17h12v-2H7.4l1.1-2h7.5a2 2 0 0 0 1.8-1l3.6-6.5A1 1 0 0 0 20.5 4H5.2l-.9-2H1Z"/></svg>
+          <span class="contador" id="contadorCarrito">0</span>
+        </button>
+        <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ========== INICIO / HERO ========== -->
+    <section class="hero" id="inicio">
+      <img src="imagenes/banner.jpeg" alt="La Mazorquitaa - Pan de Elote: panquecitos de elote artesanales" class="hero__imagen">
+      <div class="hero__botones">
+        <a href="#catalogo" class="btn btn--amarillo">🌽 Pedir Ahora</a>
+        <a href="#video" class="btn btn--verde">▶ Ver Video</a>
+        <a href="#catalogo" class="btn btn--cafe">📋 Nuestro Menú</a>
+      </div>
+      <p class="hero__lema">Horneado con amor, a la manera de siempre. Envíos y pedidos por WhatsApp.</p>
+    </section>
+
+    <!-- ========== VIDEO ========== -->
+    <section class="seccion seccion--alt" id="video">
+      <div class="contenedor">
+        <h2 class="titulo">Conoce La Mazorquitaa</h2>
+        <p class="subtitulo">Mira cómo preparamos nuestro pan de elote, tierno y recién horneado.</p>
+        <div class="video-caja">
+          <video controls preload="metadata" poster="imagenes/banner.jpeg" playsinline>
+            <source src="videos/promo.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CARRUSEL ========== -->
+    <section class="seccion" id="galeria">
+      <div class="contenedor">
+        <h2 class="titulo">Galería de Sabores</h2>
+        <p class="subtitulo">Un recorrido por nuestras delicias de elote.</p>
+
+        <div class="carrusel" id="carrusel" aria-roledescription="carrusel" aria-label="Galería de productos">
+          <div class="carrusel__pista" id="carruselPista"></div>
+          <button class="carrusel__flecha carrusel__flecha--izq" id="carruselPrev" aria-label="Diapositiva anterior">&#10094;</button>
+          <button class="carrusel__flecha carrusel__flecha--der" id="carruselNext" aria-label="Diapositiva siguiente">&#10095;</button>
+          <div class="carrusel__puntos" id="carruselPuntos" role="tablist" aria-label="Seleccionar diapositiva"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CATÁLOGO ========== -->
+    <section class="seccion seccion--alt" id="catalogo">
+      <div class="contenedor">
+        <h2 class="titulo">Menú / Catálogo</h2>
+        <p class="subtitulo">Elige tus favoritos y paga en línea con PayPal o pide por WhatsApp. Precios en MXN.</p>
+        <div class="grid-productos" id="gridProductos"></div>
+      </div>
+    </section>
+
+    <!-- ========== NOSOTROS ========== -->
+    <section class="seccion" id="nosotros">
+      <div class="contenedor">
+        <h2 class="titulo">Quiénes Somos</h2>
+        <div class="nosotros">
+          <img src="imagenes/logo.jpeg" alt="Mascota de La Mazorquitaa: una mazorca sonriente" class="nosotros__logo" loading="lazy">
+          <div class="nosotros__texto">
+            <p><strong>La Mazorquitaa - Pan de Elote</strong> es un emprendimiento familiar mexicano dedicado a la repostería artesanal con elote. Nuestro nombre nace del cariño por la mazorca: ese ingrediente humilde que, en nuestras manos, se convierte en pan suave, dulce y lleno de recuerdos.</p>
+            <h3>Nuestra historia artesanal</h3>
+            <p>Todo comenzó en una cocina casera, con la receta que pasaba de generación en generación y que se preparaba para las reuniones familiares. Los vecinos y amigos pedían más, y lo que era un gusto de domingo se volvió un proyecto de vida. Hoy seguimos horneando en pequeños lotes, con elote tierno seleccionado, mantequilla, huevo y leche, sin atajos ni conservadores innecesarios.</p>
+            <p>De aquel pan de elote tradicional crecimos hacia roscas, tamales dulces, flanes, panquecitos y galletas, siempre con el mismo sello: sabor casero, textura húmeda y presentación cuidada.</p>
+          </div>
+        </div>
+
+        <div class="tarjetas-valores">
+          <article class="valor">
+            <div class="valor__icono">🎯</div>
+            <h3>Misión</h3>
+            <p>Endulzar los momentos de cada familia mexicana con productos de elote artesanales, frescos y elaborados con ingredientes de calidad, ofreciendo un servicio cálido y confiable.</p>
+          </article>
+          <article class="valor">
+            <div class="valor__icono">🌟</div>
+            <h3>Visión</h3>
+            <p>Ser la repostería de elote preferida en México, reconocida por su sabor auténtico, su innovación y su compromiso con las tradiciones y los productores del campo.</p>
+          </article>
+          <article class="valor">
+            <div class="valor__icono">💛</div>
+            <h3>Valores</h3>
+            <ul>
+              <li><strong>Tradición:</strong> respetamos la receta de casa.</li>
+              <li><strong>Calidad:</strong> ingredientes frescos, lotes pequeños.</li>
+              <li><strong>Calidez:</strong> tratamos a cada cliente como familia.</li>
+              <li><strong>Honestidad:</strong> precios claros y productos como se muestran.</li>
+              <li><strong>Compromiso local:</strong> apoyamos a productores mexicanos.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACTO ========== -->
+    <section class="seccion seccion--alt" id="contacto">
+      <div class="contenedor">
+        <h2 class="titulo">Contacto</h2>
+        <p class="subtitulo">¿Pedido especial, evento o duda? Escríbenos, con gusto te atendemos.</p>
+
+        <div class="contacto">
+          <div class="contacto__datos">
+            <ul class="lista-contacto">
+              <li><span class="ico">📞</span><div><strong>Teléfono / WhatsApp</strong><br><a href="tel:+525556112634">55 5611 2634</a></div></li>
+              <li><span class="ico">✉️</span><div><strong>Correo electrónico</strong><br><a href="mailto:lamazorquitaa@gmail.com">lamazorquitaa@gmail.com</a></div></li>
+              <li><span class="ico">📸</span><div><strong>Instagram</strong><br><a href="https://www.instagram.com/lamazorquitaa" target="_blank" rel="noopener noreferrer">@lamazorquitaa</a></div></li>
+              <li><span class="ico">👍</span><div><strong>Facebook</strong><br><a href="https://www.facebook.com/lamazorquitaa" target="_blank" rel="noopener noreferrer">@lamazorquitaa</a></div></li>
+            </ul>
+            <a class="btn btn--whatsapp" href="https://wa.me/525556112634?text=Hola%20La%20Mazorquitaa%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer">💬 Escríbenos por WhatsApp</a>
+          </div>
+
+          <form class="formulario" id="formContacto" novalidate>
+            <h3>Envíanos un mensaje</h3>
+            <label for="fNombre">Nombre</label>
+            <input type="text" id="fNombre" name="nombre" required autocomplete="name" placeholder="Tu nombre">
+            <label for="fCorreo">Correo electrónico</label>
+            <input type="email" id="fCorreo" name="correo" required autocomplete="email" placeholder="tucorreo@ejemplo.com">
+            <label for="fTelefono">Teléfono (opcional)</label>
+            <input type="tel" id="fTelefono" name="telefono" autocomplete="tel" placeholder="55 1234 5678">
+            <label for="fMensaje">Mensaje</label>
+            <textarea id="fMensaje" name="mensaje" rows="5" required placeholder="Cuéntanos qué te gustaría pedir"></textarea>
+            <label class="check">
+              <input type="checkbox" id="fAcepto" required>
+              <span>He leído y acepto el <a href="#privacidad" data-abrir-privacidad>Aviso de Privacidad</a>.</span>
+            </label>
+            <button type="submit" class="btn btn--verde btn--bloque">Enviar mensaje</button>
+            <p class="formulario__estado" id="formEstado" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== PIE ========== -->
+  <footer class="pie">
+    <div class="contenedor pie__interior">
+      <img src="imagenes/logo.jpeg" alt="" class="pie__logo" width="64" height="64">
+      <div>
+        <strong>La Mazorquitaa - Pan de Elote</strong>
+        <p>© <span id="anio">2025</span> La Mazorquitaa. Todos los derechos reservados.</p>
+      </div>
+      <div class="pie__enlaces">
+        <a href="#privacidad" data-abrir-privacidad>Aviso de Privacidad</a>
+        <a href="https://www.instagram.com/lamazorquitaa" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/lamazorquitaa" target="_blank" rel="noopener noreferrer">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp -->
+  <a class="flotante-wa" href="https://wa.me/525556112634" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.8a10.8 10.8 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.8 10.8 0 1 1 16 26.800Zm5.9-8.100c-.3-.2-1.900-.9-2.200-1s-.5-.2-.7.200-.8 1-1 1.200-.4.200-.7.100a8.800 8.800 0 0 1-4.400-3.800c-.3-.6.300-.5.900-1.700.1-.2 0-.4 0-.5l-1-2.300c-.2-.6-.5-.5-.7-.5h-.6a1.200 1.200 0 0 0-.9.400 3.700 3.700 0 0 0-1.100 2.700 6.400 6.400 0 0 0 1.300 3.400 14.600 14.600 0 0 0 5.600 4.900c2.100.9 2.900.9 3.400.8a2.900 2.900 0 0 0 1.900-1.300 2.400 2.400 0 0 0 .2-1.300c-.1-.1-.3-.2-.6-.4Z"/></svg>
+  </a>
+
+  <!-- ========== CARRITO (panel lateral) ========== -->
+  <div class="fondo-oscuro" id="fondoCarrito" hidden></div>
+  <aside class="panel-carrito" id="panelCarrito" aria-hidden="true" aria-label="Carrito de compras">
+    <div class="panel-carrito__cabecera">
+      <h2>🛒 Tu carrito</h2>
+      <button class="cerrar" id="cerrarCarrito" aria-label="Cerrar carrito">&times;</button>
+    </div>
+    <div class="panel-carrito__cuerpo" id="carritoItems"></div>
+    <div class="panel-carrito__pie" id="carritoPie">
+      <div class="totales">
+        <div><span>Subtotal</span><span id="carritoSubtotal">$0.00 MXN</span></div>
+        <div class="totales__total"><span>Total</span><span id="carritoTotal">$0.00 MXN</span></div>
+      </div>
+      <button class="btn btn--cafe btn--bloque btn--chico" id="vaciarCarrito">🗑 Vaciar carrito</button>
+      <div id="paypal-contenedor" class="paypal-contenedor"></div>
+      <p class="paypal-nota" id="paypalNota"></p>
+    </div>
+  </aside>
+
+  <!-- ========== MODAL AVISO DE PRIVACIDAD ========== -->
+  <div class="modal" id="modalPrivacidad" role="dialog" aria-modal="true" aria-labelledby="privTitulo" hidden>
+    <div class="modal__caja">
+      <button class="cerrar" id="cerrarPrivacidad" aria-label="Cerrar aviso de privacidad">&times;</button>
+      <section id="privacidad" class="privacidad">
+        <h2 id="privTitulo">Aviso de Privacidad Integral</h2>
+        <p class="privacidad__fecha">Última actualización: <span id="privFecha"></span></p>
+
+        <h3>1. Identidad y domicilio del responsable</h3>
+        <p><strong>La Mazorquitaa - Pan de Elote</strong> (en adelante, "La Mazorquitaa"), con correo de contacto <a href="mailto:lamazorquitaa@gmail.com">lamazorquitaa@gmail.com</a> y teléfono 55 5611 2634, es responsable del tratamiento de sus datos personales, de conformidad con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), su Reglamento y los Lineamientos del Aviso de Privacidad.</p>
+
+        <h3>2. Datos personales que recabamos</h3>
+        <p>Para las finalidades descritas podemos recabar: nombre, teléfono, correo electrónico, domicilio o dirección de entrega, y el contenido de los mensajes que usted nos envíe. No recabamos datos personales sensibles. Los datos de pago son procesados directamente por PayPal; La Mazorquitaa no almacena números de tarjeta ni credenciales bancarias.</p>
+
+        <h3>3. Finalidades del tratamiento</h3>
+        <p><strong>Finalidades primarias (necesarias):</strong></p>
+        <ul>
+          <li>Atender sus solicitudes, dudas y mensajes de contacto.</li>
+          <li>Procesar, confirmar, preparar y entregar sus pedidos.</li>
+          <li>Gestionar pagos, facturación y aclaraciones.</li>
+          <li>Dar cumplimiento a obligaciones legales aplicables.</li>
+        </ul>
+        <p><strong>Finalidades secundarias (opcionales):</strong></p>
+        <ul>
+          <li>Enviarle promociones, novedades y ofertas de temporada.</li>
+          <li>Realizar encuestas de satisfacción y mejora del servicio.</li>
+        </ul>
+        <p>Si no desea que sus datos se traten para las finalidades secundarias, puede manifestarlo en cualquier momento escribiendo a <a href="mailto:lamazorquitaa@gmail.com">lamazorquitaa@gmail.com</a>; esto no será motivo para negarle los productos o servicios que solicita.</p>
+
+        <h3>4. Transferencias de datos</h3>
+        <p>Sus datos personales no serán vendidos ni compartidos con terceros, salvo: (a) proveedores de servicios necesarios para completar su pedido, como el procesador de pagos PayPal y servicios de mensajería o entrega; y (b) autoridades competentes cuando exista un requerimiento legal. Estas transferencias no requieren su consentimiento conforme al artículo 37 de la LFPDPPP.</p>
+
+        <h3>5. Derechos ARCO</h3>
+        <p>Usted tiene derecho a <strong>Acceder</strong> a sus datos y conocer los detalles de su tratamiento, <strong>Rectificarlos</strong> si son inexactos o incompletos, <strong>Cancelarlos</strong> cuando considere que no se requieren para las finalidades señaladas u opongan a ellas, y <strong>Oponerse</strong> a su tratamiento para fines específicos (derechos ARCO).</p>
+        <p>Para ejercerlos, envíe una solicitud a <a href="mailto:lamazorquitaa@gmail.com">lamazorquitaa@gmail.com</a> indicando: su nombre completo y medio para recibir respuesta, copia de una identificación oficial, la descripción clara de los datos y del derecho que desea ejercer, y cualquier documento que facilite la localización de sus datos. Responderemos en un plazo máximo de 20 días hábiles contados a partir de la recepción de la solicitud.</p>
+
+        <h3>6. Revocación del consentimiento y limitación de uso</h3>
+        <p>Usted puede revocar el consentimiento otorgado o solicitar que limitemos el uso o divulgación de sus datos enviando un correo a <a href="mailto:lamazorquitaa@gmail.com">lamazorquitaa@gmail.com</a>. Cabe señalar que, en algunos casos, la revocación podría impedir continuar con la prestación del servicio solicitado.</p>
+
+        <h3>7. Uso de tecnologías de rastreo</h3>
+        <p>Este sitio guarda en su navegador (almacenamiento local) únicamente el contenido de su carrito de compras para su comodidad; esta información no se envía a nuestros servidores. Los servicios de terceros integrados, como PayPal y Google Fonts, pueden utilizar sus propias cookies o tecnologías similares conforme a sus políticas de privacidad.</p>
+
+        <h3>8. Medidas de seguridad</h3>
+        <p>Mantenemos medidas de seguridad administrativas, técnicas y físicas razonables para proteger sus datos personales contra daño, pérdida, alteración, destrucción o uso, acceso o tratamiento no autorizado.</p>
+
+        <h3>9. Cambios al aviso de privacidad</h3>
+        <p>Cualquier modificación a este aviso será publicada en esta misma página del sitio web. Le recomendamos revisarlo periódicamente.</p>
+
+        <h3>10. Autoridad</h3>
+        <p>Si considera que su derecho a la protección de datos personales ha sido vulnerado, puede acudir ante la autoridad competente en materia de protección de datos personales en posesión de particulares en México.</p>
+
+        <p class="privacidad__acepto">Al utilizar este sitio y enviar sus datos, usted manifiesta haber leído y estar de acuerdo con este Aviso de Privacidad.</p>
+        <button class="btn btn--verde" id="aceptarPrivacidad">Entendido</button>
+      </section>
+    </div>
+  </div>
+
+  <!-- Aviso toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
