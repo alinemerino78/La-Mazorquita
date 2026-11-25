@@ -1,3 +1,4 @@
+@@ -0,0 +1,373 @@
 /* ===== La Mazorquitaa - Pan de Elote | app.js ===== */
 (function () {
   'use strict';
@@ -29,7 +30,7 @@
     { img: 'imagenes/producto3.jpeg', titulo: 'Vista destacada: Rosca de Elote para tus celebraciones', alt: 'Vista destacada de la rosca de elote artesanal', credito: 'Fotografía promocional © La Mazorquitaa - Prohibida su reproducción sin autorización', contener: false }
   ]);
 
-  var TEL_WA = '525611522634';
+  var TEL_WA = '525556112634';
   var CLAVE = 'mazorquitaa_carrito_v1';
 
   /* ---------- Utilidades ---------- */
@@ -313,54 +314,35 @@
       nota.textContent = 'Pago seguro con PayPal (modo de pruebas). Total en pesos mexicanos (MXN).';
     }).catch(function () {
       paypalEstado = 'error';
-      nota.textContent = 'No se pudo mostrar PayPal. Pide por WhatsApp al 56 1152 2634.';
+      nota.textContent = 'No se pudo mostrar PayPal. Pide por WhatsApp al 55 5611 2634.';
     });
   }
 
   /* ---------- Modal Aviso de Privacidad ---------- */
-  var modal = $('modalPrivacidad'), ultimoFoco = null, obligatorio = false;
-  var CLAVE_PRIV = 'mazorquita_privacidad_aceptada';
-  function yaAcepto() { try { return sessionStorage.getItem(CLAVE_PRIV) === '1'; } catch (e) { return false; } }
-  function abrirPrivacidad(forzar) {
+  var modal = $('modalPrivacidad'), ultimoFoco = null;
+  function abrirPrivacidad() {
     ultimoFoco = document.activeElement;
-    obligatorio = forzar === true;
-    modal.classList.toggle('modal--obligatorio', obligatorio);
     modal.hidden = false; document.body.style.overflow = 'hidden';
-    $('privacidad').scrollTop = 0;
-    (obligatorio ? $('aceptarPrivacidad') : $('cerrarPrivacidad')).focus();
+    $('cerrarPrivacidad').focus();
   }
   function cerrarPrivacidad() {
     modal.hidden = true;
     if (!panelAbierto) document.body.style.overflow = '';
     if (ultimoFoco && ultimoFoco.focus) ultimoFoco.focus();
   }
-  function aceptarPrivacidad() {
-    try { sessionStorage.setItem(CLAVE_PRIV, '1'); } catch (e) { /* sin almacenamiento */ }
-    obligatorio = false;
-    cerrarPrivacidad();
-  }
   document.addEventListener('click', function (e) {
     var a = e.target.closest('[data-abrir-privacidad]');
-    if (a) { e.preventDefault(); cerrarNav(); abrirPrivacidad(false); }
+    if (a) { e.preventDefault(); cerrarNav(); abrirPrivacidad(); }
   });
-  $('cerrarPrivacidad').addEventListener('click', function () { if (!obligatorio) cerrarPrivacidad(); });
-  $('aceptarPrivacidad').addEventListener('click', aceptarPrivacidad);
-  modal.addEventListener('click', function (e) { if (e.target === modal && !obligatorio) cerrarPrivacidad(); });
+  $('cerrarPrivacidad').addEventListener('click', cerrarPrivacidad);
+  $('aceptarPrivacidad').addEventListener('click', cerrarPrivacidad);
+  modal.addEventListener('click', function (e) { if (e.target === modal) cerrarPrivacidad(); });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Tab' && !modal.hidden && obligatorio) {
-      // mantener el foco dentro del modal obligatorio
-      var f = [$('privacidad'), $('aceptarPrivacidad')];
-      var i = f.indexOf(document.activeElement);
-      e.preventDefault();
-      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
-      return;
-    }
     if (e.key !== 'Escape') return;
-    if (!modal.hidden) { if (!obligatorio) cerrarPrivacidad(); } else if (panelAbierto) cerrarCarrito();
+    if (!modal.hidden) cerrarPrivacidad(); else if (panelAbierto) cerrarCarrito();
   });
-  if (!yaAcepto()) abrirPrivacidad(true);
-  else if (location.hash === '#privacidad') abrirPrivacidad(false);
-  window.addEventListener('hashchange', function () { if (location.hash === '#privacidad' && modal.hidden) abrirPrivacidad(false); });
+  if (location.hash === '#privacidad') abrirPrivacidad();
+  window.addEventListener('hashchange', function () { if (location.hash === '#privacidad') abrirPrivacidad(); });
 
   /* ---------- Formulario de contacto (sin backend: abre WhatsApp / correo) ---------- */
   var form = $('formContacto'), estado = $('formEstado');
@@ -381,11 +363,12 @@
       (tel.value.trim() ? '\nTeléfono: ' + tel.value.trim() : '');
     window.open('https://wa.me/' + TEL_WA + '?text=' + encodeURIComponent(texto), '_blank', 'noopener');
     estado.className = 'formulario__estado ok';
-    estado.textContent = '¡Gracias! Se abrió WhatsApp para enviar tu mensaje. También puedes escribirnos a lamazorquitaaa@gmail.com.';
+    estado.textContent = '¡Gracias! Se abrió WhatsApp para enviar tu mensaje. También puedes escribirnos a lamazorquitaa@gmail.com.';
     form.reset();
   });
 
   /* ---------- Varios ---------- */
   $('anio').textContent = new Date().getFullYear();
+  $('privFecha').textContent = new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
   pintarCarrito();
 })();
